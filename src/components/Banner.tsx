@@ -1,7 +1,17 @@
 import { useState, useEffect } from 'react';
+import Banner1 from '../assets/images/Banner.jpg';
+import Banner2 from '../assets/images/Banner2.jpg';
+import Banner3 from '../assets/images/Banner3.avif';
+import Banner4 from '../assets/images/Banner4.avif';
+import Banner5 from '../assets/images/Banner5.jpg';
+import '../styles/banner.css';
 
 const Banner = () => {
   const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+  
+  // Mảng chứa các ảnh banner
+  const bannerImages = [Banner3, Banner1, Banner2, Banner4];
 
   useEffect(() => {
     const handleCategoriesToggle = (event: CustomEvent) => {
@@ -17,21 +27,55 @@ const Banner = () => {
     };
   }, []);
 
+  // Tự động chuyển ảnh
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBannerIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
+    }, 5000); // Chuyển ảnh sau mỗi 5 giây
+
+    return () => clearInterval(interval);
+  }, [bannerImages.length]);
+
+  // Xử lý sự kiện click nút prev
+  const handlePrevClick = () => {
+    setCurrentBannerIndex((prevIndex) => 
+      prevIndex === 0 ? bannerImages.length - 1 : prevIndex - 1
+    );
+  };
+
+  // Xử lý sự kiện click nút next
+  const handleNextClick = () => {
+    setCurrentBannerIndex((prevIndex) => 
+      (prevIndex + 1) % bannerImages.length
+    );
+  };
+
   return (
     <div className={`flex flex-col px-8 ${categoriesOpen ? 'pl-[23%]' : 'w-full'} transition-all duration-300`}>
       {/* Main Banner */}
       <div 
         className={`relative bg-gray-100 overflow-hidden transition-all duration-300 ease-in-out h-[400px]`}
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ 
-            backgroundImage: "url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')", 
-            filter: 'brightness(0.8)'
-          }}
-        ></div>
+        {bannerImages.map((image, index) => (
+          <div 
+            key={index}
+            className={`absolute inset-0 overflow-hidden ${
+              index === currentBannerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
+          >
+            <div 
+              className={`absolute inset-0 bg-cover bg-center w-full h-full transform ${
+                index === currentBannerIndex ? 'banner-zoom-animation' : ''
+              }`}
+              style={{ 
+                backgroundImage: `url(${image})`, 
+                filter: 'brightness(0.8)',
+              }}
+            />
+          </div>
+        ))}
         
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center z-20">
           <div className="px-4 max-w-2xl">
             <h2 className="text-2xl font-bold mb-2">10% OFF YOUR FIRST ORDER</h2>
             <h1 className="text-5xl font-bold mb-6">Reasonable Price</h1>
@@ -41,20 +85,34 @@ const Banner = () => {
           </div>
         </div>
         
+        {/* Banner indicator dots */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+          {bannerImages.map((_, index) => (
+            <button 
+              key={index} 
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentBannerIndex ? 'bg-white scale-125' : 'bg-gray-400'}`}
+              onClick={() => setCurrentBannerIndex(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+        
         {/* Navigation Arrows */}
         <button 
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 p-2 rounded-full text-white"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 p-2 rounded-full text-black z-20"
           aria-label="Previous slide"
           title="Previous slide"
+          onClick={handlePrevClick}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <button 
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 p-2 rounded-full text-white"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 p-2 rounded-full text-black z-20"
           aria-label="Next slide"
           title="Next slide"
+          onClick={handleNextClick}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -70,7 +128,7 @@ const Banner = () => {
             <div 
               className="absolute inset-0 bg-cover bg-center"
               style={{ 
-                backgroundImage: "url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')", 
+                backgroundImage: `url(${Banner4})`, 
                 filter: 'brightness(0.9)'
               }}
             ></div>
@@ -90,7 +148,7 @@ const Banner = () => {
             <div 
               className="absolute inset-0 bg-cover bg-center"
               style={{ 
-                backgroundImage: "url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')", 
+                backgroundImage: `url(${Banner5})`, 
                 filter: 'brightness(0.9)'
               }}
             ></div>

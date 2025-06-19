@@ -1,0 +1,23 @@
+@keyframes zoomEffect {
+    0% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+.banner-zoom-animation {
+    animation: zoomEffect 5s forwards ease-out;
+}
+
+
+/* Thêm transition cho opacity giữa các banner */
+
+.opacity-100 {
+    transition: opacity 1s ease-in-out;
+}
+
+.opacity-0 {
+    transition: opacity 1s ease-in-out;
+}
