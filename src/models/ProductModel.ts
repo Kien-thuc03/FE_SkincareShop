@@ -2,12 +2,14 @@ export interface Product {
   id: number;
   name: string;
   price: number;
+  originalPrice?: number;
   image: string;
   category?: string;
   rating?: number;
   reviews?: number;
   isNew?: boolean;
   isBestSeller?: boolean;
+  onSale?: boolean;
   discount?: number;
 }
 
@@ -21,53 +23,48 @@ import item5 from '../assets/images/item5.jpg';
 export const featuredProducts: Product[] = [
   {
     id: 1,
-    name: "Pure Cleanse",
-    price: 299000,
+    name: "Pure Pineapple",
+    price: 14,
+    originalPrice: 36,
     image: item1,
-    category: "skincare",
-    rating: 4.8,
-    reviews: 124,
-    isBestSeller: true
+    category: "ageloc",
+    onSale: true
   },
   {
     id: 2,
-    name: "Pure Essence",
-    price: 399000,
+    name: "Pure Pineapple",
+    price: 14,
+    originalPrice: 36,
     image: item2,
-    category: "toner",
-    rating: 4.6,
-    reviews: 89,
-    isNew: true
+    category: "ageloc",
+    onSale: true
   },
   {
     id: 3,
-    name: "Pure Cream",
-    price: 499000,
+    name: "Pure Pineapple",
+    price: 14,
+    originalPrice: 36,
     image: item3,
-    category: "moisturizer",
-    rating: 4.9,
-    reviews: 156,
-    isBestSeller: true
+    category: "ageloc",
+    onSale: true
   },
   {
     id: 4,
     name: "Brightening Serum",
-    price: 499000,
+    price: 25,
+    originalPrice: 45,
     image: item4,
     category: "serum",
-    rating: 4.7,
-    reviews: 112,
-    discount: 15
+    onSale: true
   },
   {
     id: 5,
     name: "Anti-Aging Cream",
-    price: 599000,
+    price: 30,
+    originalPrice: 55,
     image: item5,
     category: "moisturizer",
-    rating: 4.5,
-    reviews: 78,
-    isNew: true
+    onSale: true
   }
 ];
 

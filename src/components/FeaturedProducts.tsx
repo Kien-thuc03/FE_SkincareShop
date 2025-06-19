@@ -21,39 +21,22 @@ const FeaturedProducts = () => {
     currentPage * productsPerPage, 
     (currentPage + 1) * productsPerPage
   );
-  
-  // Format price to Vietnamese currency format
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND',
-      minimumFractionDigits: 0
-    }).format(price);
-  };
 
   return (
     <section className="bg-gray-50 py-8">
       <div className="container mx-auto flex flex-col justify-center items-center px-4">
-        {/* Header */}
-        <div className="bg-[#59177e] w-[25%] py-3 px-6 mb-6 rounded-lg">
-          <h2 className="text-white text-2xl font-semibold text-center">
-            Most Popular Products
-          </h2>
-        </div>
-
-        <div className="bg-gray-50 rounded-lg shadow overflow-hidden">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-6xl">
           {/* Main content container */}
           <div className="flex flex-col md:flex-row">
-            {/* Left sidebar with background - adjusted for full height */}
+            {/* Left sidebar */}
             <div className="w-full md:w-1/4 bg-gray-50 flex flex-col">
               <div className="relative py-16 px-6 z-10 overflow-hidden h-full flex-grow">
-                {/* Increase font size for the headline text */}
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3 relative z-10">Find out what everyone's talking about</h3>
-                <p className="text-lg text-gray-600 mb-4 relative z-10">Browse our best</p>
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3 relative z-10">Find out<br/>what<br/>everyone's<br/>talking<br/>about</h3>
+                <p className="text-lg text-gray-600 mb-4 relative z-10 mt-4">Browse our best</p>
                 
-                {/* Curved lines with animations and blur in the upper right */}
+                {/* Decorative elements */}
                 <div className="absolute inset-0 z-0 opacity-90">
-                  {/* Curved Arc decorations - upper right */}
+                  {/* Curved Arc decorations */}
                   <div className="absolute top-6 right-0 w-20 h-20 border-t-2 border-emerald-400 rounded-tl-full blur-[2px] animate-pulse-slow"></div>
                   <div className="absolute top-10 right-4 w-28 h-28 border-t-2 border-emerald-400 rounded-tl-full blur-[3px] animate-float delay-75"></div>
                   <div className="absolute top-16 right-0 w-24 h-24 border-t-2 border-emerald-400 rounded-tl-full blur-[2px] animate-pulse-slow delay-150"></div>
@@ -86,24 +69,25 @@ const FeaturedProducts = () => {
 
             {/* Right product section */}
             <div className="w-full md:w-3/4 border-l border-gray-200">
+              {/* Tabs */}
               <div className="border-b">
                 <div className="flex items-center">
                   <div className="flex flex-1">
                     <button 
-                      className={`px-6 py-4 text-sm font-medium uppercase ${activeTab === 'description' ? 'border-b-2 border-[#59177e] text-[#59177e] font-semibold' : 'text-gray-500'}`}
+                      className={`px-6 py-4 text-sm font-medium uppercase ${activeTab === 'description' ? 'border-b-2 border-yellow-600 text-gray-800 font-semibold' : 'text-gray-500'}`}
                       onClick={() => setActiveTab('description')}
                     >
                       Description
                     </button>
                     <button 
-                      className={`px-6 py-4 text-sm font-medium uppercase ${activeTab === 'specifications' ? 'border-b-2 border-[#59177e] text-[#59177e] font-semibold' : 'text-gray-500'}`}
+                      className={`px-6 py-4 text-sm font-medium uppercase ${activeTab === 'specifications' ? 'border-b-2 border-yellow-600 text-gray-800 font-semibold' : 'text-gray-500'}`}
                       onClick={() => setActiveTab('specifications')}
                     >
                       Specifications
                     </button>
                   </div>
                   <div className="px-6">
-                    <a href="#" className="text-sm text-gray-600 hover:text-[#59177e] font-medium">View All &gt;&gt;</a>
+                    <a href="#" className="text-sm text-gray-600 hover:text-gray-800 font-medium">View All &gt;&gt;</a>
                   </div>
                 </div>
               </div>
@@ -112,68 +96,48 @@ const FeaturedProducts = () => {
               <div className="py-6 px-6 relative">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {displayedProducts.map(product => (
-                    <div key={product.id} className="border border-gray-200 rounded overflow-hidden relative hover:shadow-lg transition-shadow duration-300">
-                      {/* Product badges */}
+                    <div key={product.id} className="border border-gray-200 rounded-md overflow-hidden relative hover:shadow-lg transition-shadow duration-300">
                       <div className="relative">
-                        {/* BEST SELLER badge */}
-                        {product.isBestSeller && (
-                          <div className="absolute top-3 left-3 bg-red-500 text-white text-xs px-3 py-1 rounded-sm font-bold z-10">
-                            BEST SELLER
-                          </div>
-                        )}
-                        
-                        {/* NEW badge */}
-                        {product.isNew && (
-                          <div className="absolute top-3 right-3 bg-green-500 text-white text-xs px-3 py-1 rounded-sm font-bold z-10">
-                            NEW
+                        {/* SALE badge */}
+                        {product.onSale && (
+                          <div className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-sm z-10">
+                            SALE
                           </div>
                         )}
                         
                         {/* Product image */}
-                        <div className="p-6 flex justify-center items-center bg-white h-56">
+                        <div className="p-4 flex justify-center items-center bg-white h-48">
                           <img 
                             src={product.image} 
                             alt={product.name} 
                             className="max-h-full max-w-full object-contain hover:scale-105 transition-transform duration-300" 
                           />
                         </div>
-                        
-                        {/* HOT badge */}
-                        <div className="absolute top-1/3 right-4 w-14 h-14 bg-yellow-400 rounded-full flex items-center justify-center z-10 shadow-md">
-                          <span className="text-sm font-bold">HOT</span>
+
+                        {/* Round badge with product certification */}
+                        <div className="absolute right-2 top-2 w-16 h-16">
+                          <div className="rounded-full bg-yellow-400 border-2 border-yellow-500 w-12 h-12 flex items-center justify-center">
+                            {/* This would be the certification logo */}
+                          </div>
                         </div>
                       </div>
                       
                       {/* Product details */}
                       <div className="p-4 text-center bg-white">
-                        <p className="text-gray-500 text-xs uppercase tracking-wider">{product.category}</p>
+                        <p className="text-gray-400 text-xs uppercase tracking-wider">{product.category}</p>
                         <h3 className="font-medium text-lg mt-1">{product.name}</h3>
                         
-                        {/* Ratings */}
-                        {product.rating && (
-                          <div className="flex items-center justify-center my-2">
-                            <div className="flex text-yellow-400">
-                              {[...Array(5)].map((_, i) => (
-                                <svg key={i} xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill={i < Math.floor(product.rating || 0) ? "currentColor" : "none"} stroke="currentColor">
-                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                              ))}
-                            </div>
-                            <span className="text-xs text-gray-500 ml-1">({product.reviews})</span>
-                          </div>
-                        )}
-                        
-                        {/* Price */}
-                        <div className="text-[#59177e] font-bold text-lg mt-2">
-                          {formatPrice(product.price)}
+                        {/* Price with sale format */}
+                        <div className="flex items-center justify-center mt-2">
+                          <span className="text-yellow-600 font-bold text-lg">${product.price.toFixed(2)}</span>
+                          {product.originalPrice && (
+                            <span className="text-gray-400 text-sm line-through ml-2">${product.originalPrice.toFixed(2)}</span>
+                          )}
                         </div>
                         
                         {/* Add to cart button */}
-                        <button className="mt-4 bg-[#59177e] text-white w-full py-3 rounded hover:bg-purple-800 transition-colors flex items-center justify-center gap-2 font-medium">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                          </svg>
-                          Add to cart
+                        <button className="mt-4 bg-purple-900 text-white w-full py-2 rounded hover:bg-purple-800 transition-colors font-medium">
+                          Add to card
                         </button>
                       </div>
                     </div>
@@ -183,19 +147,19 @@ const FeaturedProducts = () => {
                 {/* Navigation arrows */}
                 <button 
                   onClick={handlePrevPage}
-                  className="absolute top-1/2 -left-5 transform -translate-y-1/2 bg-white rounded-full w-10 h-10 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-100"
+                  className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full w-8 h-8 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-100"
                   aria-label="Previous page"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 <button 
                   onClick={handleNextPage}
-                  className="absolute top-1/2 -right-5 transform -translate-y-1/2 bg-white rounded-full w-10 h-10 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-100"
+                  className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full w-8 h-8 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-100"
                   aria-label="Next page"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
@@ -207,7 +171,7 @@ const FeaturedProducts = () => {
                   <button 
                     key={index}
                     onClick={() => setCurrentPage(index)}
-                    className={`mx-1 ${currentPage === index ? 'w-6 h-2 bg-[#59177e]' : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'} rounded-full transition-all duration-300`}
+                    className={`mx-1 ${currentPage === index ? 'w-6 h-2 bg-gray-800' : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'} rounded-full transition-all duration-300`}
                     aria-label={`Go to page ${index + 1}`}
                   />
                 ))}
