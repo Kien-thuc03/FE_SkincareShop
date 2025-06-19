@@ -86,57 +86,12 @@ const Header = () => {
           </div>
         </div>
       </div>
-      
-      {/* Search and logo section */}
-      <div className="py-4">
-        <div className="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
-          <div className="w-48 flex-shrink-0"></div> {/* Empty space for sidebar alignment */}
-          
-          <div className="flex-1 max-w-xl">
-            <form onSubmit={handleSearchSubmit} className="relative">
-              <input
-                type="text"
-                placeholder="Search for products"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                className="w-full border border-gray-300 px-4 py-2 rounded-sm"
-              />
-              <button 
-                type="submit" 
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
-                aria-label="Search"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
-            </form>
-          </div>
-          
-          <div className="flex items-center space-x-6">
-            <Link to="/wishlist" className="flex items-center text-gray-700">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-              <span className="ml-1 text-sm">0</span>
-            </Link>
-            
-            <Link to="/cart" className="flex items-center text-gray-700">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-              </svg>
-              <span className="ml-1 text-sm">{cartCount}</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-      
-      
 
       {/* Main content with sidebar */}
       <div className="flex px-8">
         {/* Categories sidebar */}
-        <aside className="w-1/5 bg-white">
+        <aside className="w-1/5 flex flex-col justify-between">
+        <div className="w-48"></div> {/* Empty space for sidebar alignment */}
         <div 
           className="bg-[#59177e] text-white py-3 px-4 font-medium flex justify-between items-center cursor-pointer"
           onClick={toggleCategories}
@@ -172,7 +127,48 @@ const Header = () => {
         </aside>
         {/* Main navigation */}
         <div className="w-4/5 border-t border-b border-gray-200">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="container flex flex-col mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Search and logo section */}
+            <div className="py-4">
+              <div className="container mx-auto flex justify-between items-center">
+                <div className="flex-1 max-w-xl">
+                  <form onSubmit={handleSearchSubmit} className="relative">
+                    <input
+                      type="text"
+                      placeholder="Search for products"
+                      value={searchQuery}
+                      onChange={handleSearchChange}
+                      className="w-full border border-gray-300 px-4 py-2 rounded-sm"
+                    />
+                    <button 
+                      type="submit" 
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
+                      aria-label="Search"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                    </button>
+                  </form>
+                </div>
+                
+                <div className="flex items-center space-x-6">
+                  <Link to="/wishlist" className="flex items-center text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <span className="ml-1 text-sm">0</span>
+                  </Link>
+                  
+                  <Link to="/cart" className="flex items-center text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span className="ml-1 text-sm">{cartCount}</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
             <div className="flex justify-between">
               <nav className="flex space-x-8 py-3">
                 <Link to="/" className="text-gray-700 hover:text-[#59177e]">Home</Link>
