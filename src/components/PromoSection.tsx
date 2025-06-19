@@ -1,36 +1,43 @@
+import banner from '../assets/images/Banner.jpg';
+
 const PromoSection = () => {
   return (
-    <section className="bg-white px-4 py-8">
+    <section className="bg-gray-100 px-4 py-1">
       <div className="container mx-auto">
-        <div className="bg-[#f8f1ff] rounded overflow-hidden shadow-sm">
+        <div className="bg-[#f5f5f2] rounded-lg overflow-hidden shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-2">
-            {/* Text content */}
-            <div className="p-6 flex flex-col justify-center">
-              <div className="inline-block bg-[#59177e] text-white text-xs font-semibold px-3 py-1 rounded-sm mb-3">
-                FEATURED PRODUCT
+            {/* Image */}
+            <div className="relative p-4 flex items-center justify-center">
+              <div className="w-full h-full max-w-xl relative">
+                <img
+                  src={banner}
+                  alt="Woman applying ageLOC LumiSpa device"
+                  className="w-full h-auto object-contain scale-110 p-7"
+                />
+                <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-purple-800 text-white rounded-full w-20 h-20 flex flex-col items-center justify-center">
+                  <span className="text-xs font-medium">Sale Of</span>
+                  <span className="text-base font-bold">$29.99</span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3">ageLOC LumiSpa® iO</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Elevate your skincare routine with our innovative cleansing device
-              </p>
-              <button
-                className="bg-[#59177e] text-white text-sm font-medium py-2 px-4 rounded-sm w-28"
-                aria-label="Learn more about LumiSpa iO"
-              >
-                Learn More
-              </button>
             </div>
             
-            {/* Image */}
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Woman applying skincare product"
-                className="w-full h-60 object-cover"
-              />
-              <div className="absolute top-3 right-3 bg-[#59177e] text-white font-bold text-sm rounded-full w-12 h-12 flex items-center justify-center">
-                -20%
+            {/* Text content */}
+            <div className="p-8 md:p-12 flex flex-col justify-center">
+              <div className="text-orange-500 font-semibold text-sm mb-3 tracking-wider">
+                AGELOC® LUMISPA® IO
               </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                ageLOC® LumiSpa® iO
+              </h2>
+              <p className="text-gray-700 mb-6">
+                Elevate your skincare routine
+              </p>
+              <button
+                className="bg-purple-800 text-white text-sm font-bold py-3 px-6 rounded-sm w-40 uppercase tracking-wider"
+                aria-label="Shop now for ageLOC LumiSpa iO"
+              >
+                Shop Now
+              </button>
             </div>
           </div>
         </div>
