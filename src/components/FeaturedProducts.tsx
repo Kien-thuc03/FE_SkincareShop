@@ -23,7 +23,7 @@ const FeaturedProducts = () => {
   );
 
   return (
-    <section className="bg-gray-50 py-8">
+    <section className="bg-gray-100 py-8">
       <div className="container mx-auto flex flex-col justify-center items-center px-4">
         {/* Header */}
         <div className="bg-[#59177e] w-[25%] py-3 px-6 mb-6 rounded-lg">
@@ -32,11 +32,11 @@ const FeaturedProducts = () => {
           </h2>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md overflow-hidden w-full">
+        <div className="bg-gray-100 rounded-lg shadow-md overflow-hidden w-full">
           {/* Main content container */}
-          <div className="flex flex-col md:flex-row">
+          <div className="flex flex-col md:flex-row gap-4">
             {/* Left sidebar */}
-            <div className="w-full md:w-1/4 bg-gray-50 flex flex-col">
+            <div className=" w-full md:w-1/4 bg-white flex flex-col ">
               <div className="relative py-16 px-6 z-10 overflow-hidden h-full flex-grow">
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3 relative z-10">Find out<br/>what<br/>everyone's<br/>talking<br/>about</h3>
                 <p className="text-lg text-gray-600 mb-4 relative z-10 mt-4">Browse our best</p>
@@ -75,7 +75,7 @@ const FeaturedProducts = () => {
             </div>
 
             {/* Right product section */}
-            <div className="w-full md:w-3/4 border-l border-gray-200">
+            <div className="w-full md:w-3/4 ">
               {/* Tabs */}
               <div className="border-b">
                 <div className="flex items-center">
@@ -107,13 +107,13 @@ const FeaturedProducts = () => {
                       <div className="relative">
                         {/* SALE badge */}
                         {product.onSale && (
-                          <div className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-sm z-10">
+                          <div className="absolute top-2 left-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-sm z-10">
                             SALE
                           </div>
                         )}
                         
                         {/* Product image */}
-                        <div className="p-4 flex justify-center items-center bg-white h-48">
+                        <div className="p-4 flex justify-center items-center bg-white h-70">
                           <img 
                             src={product.image} 
                             alt={product.name} 
@@ -123,8 +123,8 @@ const FeaturedProducts = () => {
 
                         {/* Round badge with product certification */}
                         <div className="absolute right-2 top-2 w-16 h-16">
-                          <div className="rounded-full bg-yellow-400 border-2 border-yellow-500 w-12 h-12 flex items-center justify-center">
-                            {/* This would be the certification logo */}
+                          <div className="flex items-center justify-center">
+                            <img src={product.certification} alt={product.name} className="w-15 h-15 rounded-full" />
                           </div>
                         </div>
                       </div>
