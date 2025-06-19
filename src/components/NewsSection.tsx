@@ -1,4 +1,5 @@
 import { news } from '../models/ProductModel';
+import fallbackImage from '../assets/react.svg';
 
 const NewsSection = () => {
   return (
@@ -17,7 +18,10 @@ const NewsSection = () => {
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = 'https://via.placeholder.com/400x300?text=News';
+                    if (!target.getAttribute('data-error')) {
+                      target.setAttribute('data-error', 'true');
+                      target.src = fallbackImage;
+                    }
                   }}
                 />
               </div>

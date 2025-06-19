@@ -1,6 +1,7 @@
 import { getCartController } from '../controllers/CartController';
 import { initialCart } from '../models/CartModel';
 import type { Product } from '../models/ProductModel';
+import fallbackImage from '../assets/react.svg';
 
 interface ProductCardProps {
   product: Product;
@@ -22,7 +23,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
           className="w-full h-full object-cover"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src = 'https://via.placeholder.com/300x300?text=Product+Image';
+            if (!target.getAttribute('data-error')) {
+              target.setAttribute('data-error', 'true');
+              target.src = fallbackImage;
+            }
           }}
         />
       </div>

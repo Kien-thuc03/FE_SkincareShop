@@ -1,4 +1,5 @@
 import { awards } from '../models/ProductModel';
+import fallbackImage from '../assets/react.svg';
 
 const AwardSection = () => {
   return (
@@ -17,7 +18,10 @@ const AwardSection = () => {
                   className="w-16 h-16 object-contain"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = 'https://via.placeholder.com/150?text=Award';
+                    if (!target.getAttribute('data-error')) {
+                      target.setAttribute('data-error', 'true');
+                      target.src = fallbackImage;
+                    }
                   }}
                 />
               </div>
