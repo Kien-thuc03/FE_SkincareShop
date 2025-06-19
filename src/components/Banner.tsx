@@ -18,7 +18,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className={`flex flex-col mt-[180px] ${categoriesOpen ? 'pl-[20%]' : 'w-full'} transition-all duration-300`}>
+    <div className={`flex flex-col px-8 ${categoriesOpen ? 'pl-[20%]' : 'w-full'} transition-all duration-300`}>
       {/* Main Banner */}
       <div 
         className={`relative bg-gray-100 overflow-hidden transition-all duration-300 ease-in-out h-[400px]`}
@@ -63,7 +63,7 @@ const Banner = () => {
       </div>
       
       {/* Collection Banners */}
-      <div className={`container mx-auto px-4 py-4 ${categoriesOpen ? '' : 'max-w-full'}`}>
+      <div className={`container mx-auto py-4 ${categoriesOpen ? '' : 'max-w-full'}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Collection 1 */}
           <div className="relative h-48 bg-gray-200 overflow-hidden">
