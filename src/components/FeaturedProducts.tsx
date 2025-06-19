@@ -25,7 +25,14 @@ const FeaturedProducts = () => {
   return (
     <section className="bg-gray-50 py-8">
       <div className="container mx-auto flex flex-col justify-center items-center px-4">
-        <div className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-6xl">
+        {/* Header */}
+        <div className="bg-[#59177e] w-[25%] py-3 px-6 mb-6 rounded-lg">
+          <h2 className="text-white text-2xl font-semibold text-center">
+            Most Popular Products
+          </h2>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-md overflow-hidden w-full">
           {/* Main content container */}
           <div className="flex flex-col md:flex-row">
             {/* Left sidebar */}
