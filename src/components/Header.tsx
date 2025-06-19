@@ -127,7 +127,7 @@ const Header = () => {
                 {categories.map((category, index) => (
                   <li key={index} className="border-b border-gray-100 last:border-b-0">
                     <Link 
-                      to={`/category/${category.toLowerCase()}`}
+                      to={`/`}
                       className="block py-2 px-4 text-gray-700 hover:bg-gray-100"
                     >
                       {category}
@@ -166,12 +166,12 @@ const Header = () => {
                 </div>
                 
                 <div className="flex items-center space-x-6">
-                  <Link to="/wishlist" className="flex items-center text-gray-700">
+                  <Link to="/" className="flex items-center text-gray-700">
                     <FontAwesomeIcon icon={faHeart} />
                     <span className="ml-1 text-sm">0</span>
                   </Link>
                   
-                  <Link to="/cart" className="flex items-center text-gray-700">
+                  <Link to="/" className="flex items-center text-gray-700">
                     <FontAwesomeIcon icon={faCartShopping} />
                     <span className="ml-1 text-sm">{cartCount}</span>
                   </Link>
@@ -181,8 +181,8 @@ const Header = () => {
             <div className="flex justify-between">
               <nav className="flex space-x-8 py-3">
                 <Link to="/" className="text-gray-700 hover:text-[#59177e]">Home</Link>
-                <Link to="/shop" className="text-gray-700 hover:text-[#59177e]">Shop</Link>
-                <Link to="/shop-detail" className="text-gray-700 hover:text-[#59177e]">Shop Detail</Link>
+                <Link to="/" className="text-gray-700 hover:text-[#59177e]">Shop</Link>
+                <Link to="/" className="text-gray-700 hover:text-[#59177e]">Shop Detail</Link>
                 <div className="relative group">
                   <button className="text-gray-700 hover:text-[#59177e] flex items-center">
                     Pages
@@ -191,16 +191,16 @@ const Header = () => {
                     </svg>
                   </button>
                   <div className="absolute z-10 left-0 hidden group-hover:block bg-white shadow-md py-2 w-48">
-                    <Link to="/about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About Us</Link>
-                    <Link to="/faq" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</Link>
-                    <Link to="/terms" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</Link>
+                    <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About Us</Link>
+                    <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</Link>
+                    <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</Link>
                   </div>
                 </div>
-                <Link to="/contact" className="text-gray-700 hover:text-[#59177e]">Contact</Link>
+                <Link to="/" className="text-gray-700 hover:text-[#59177e]">Contact</Link>
               </nav>
               <div className="flex items-center space-x-6 py-3">
-                <Link to="/login" className="text-gray-700 hover:text-[#59177e]">Login</Link>
-                <Link to="/register" className="text-gray-700 hover:text-[#59177e]">Register</Link>
+                <Link to="/" className="text-gray-700 hover:text-[#59177e]">Login</Link>
+                <Link to="/" className="text-gray-700 hover:text-[#59177e]">Register</Link>
               </div>
             </div>
           </div>

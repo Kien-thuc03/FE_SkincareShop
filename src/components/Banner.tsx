@@ -7,7 +7,7 @@ import Banner5 from '../assets/images/Banner5.jpg';
 import '../styles/banner.css';
 
 const Banner = () => {
-  const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [categoriesOpen, setCategoriesOpen] = useState(true);
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
   
   // Mảng chứa các ảnh banner
