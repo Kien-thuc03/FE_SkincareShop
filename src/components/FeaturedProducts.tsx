@@ -1,10 +1,13 @@
 import { featuredProducts } from '../models/ProductModel';
 import { useState } from 'react';
 import '../styles/animations.css';
+import { getCartController } from '../controllers/CartController';
+import { initialCart } from '../models/CartModel';
 
 const FeaturedProducts = () => {
   const [activeTab, setActiveTab] = useState<'description' | 'specifications'>('description');
   const [currentPage, setCurrentPage] = useState(0);
+  const cartController = getCartController(initialCart);
   
   const productsPerPage = 3;
   const totalPages = Math.ceil(featuredProducts.length / productsPerPage);
@@ -15,6 +18,10 @@ const FeaturedProducts = () => {
   
   const handlePrevPage = () => {
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+  
+  const addToCart = (productId: number) => {
+    cartController.addToCart(productId);
   };
   
   const displayedProducts = featuredProducts.slice(
@@ -143,7 +150,10 @@ const FeaturedProducts = () => {
                         </div>
                         
                         {/* Add to cart button */}
-                        <button className="mt-4 bg-purple-900 text-white w-full py-2 rounded hover:bg-purple-800 transition-colors font-medium">
+                        <button 
+                          className="mt-4 bg-purple-900 text-white w-full py-2 rounded hover:bg-purple-800 transition-colors font-medium"
+                          onClick={() => addToCart(product.id)}
+                        >
                           Add to card
                         </button>
                       </div>
