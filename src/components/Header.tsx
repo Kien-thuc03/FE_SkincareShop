@@ -8,6 +8,7 @@ import { initialSearchState } from '../models/SearchModel';
 const Header = () => {
   const [cartCount, setCartCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
   const cartController = getCartController(initialCart);
   const searchController = getSearchController(initialSearchState);
 
@@ -39,6 +40,10 @@ const Header = () => {
   const categories = [
     "Dresses", "Shirts", "Jeans", "Swimwear", "Sleepwear", "Sportswear", "Jumpsuits", "Blazers", "Jackets", "Shoes"
   ];
+
+  const toggleCategories = () => {
+    setIsCategoriesOpen(!isCategoriesOpen);
+  };
 
   return (
     <div className="flex flex-col">
@@ -129,13 +134,27 @@ const Header = () => {
       
 
       {/* Main content with sidebar */}
-      <div className="flex sm:px-6 lg:px-8">
+      <div className="flex px-8">
         {/* Categories sidebar */}
-        <aside className="w-48 bg-white">
-          <div className="bg-[#59177e] text-white py-3 px-4 font-medium">
-            Categories
-          </div>
-          <nav>
+        <aside className="w-1/5 bg-white">
+        <div 
+          className="bg-[#59177e] text-white py-3 px-4 font-medium flex justify-between items-center cursor-pointer"
+          onClick={toggleCategories}
+        >
+          <span>Categories</span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className={`h-4 w-4 transition-transform ${isCategoriesOpen ? 'transform rotate-180' : ''}`} 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        
+        {isCategoriesOpen && (
+          <nav className="w-full bg-white">
             <ul>
               {categories.map((category, index) => (
                 <li key={index} className="border-b border-gray-100 last:border-b-0">
@@ -149,13 +168,14 @@ const Header = () => {
               ))}
             </ul>
           </nav>
+        )}
         </aside>
         {/* Main navigation */}
-        <div className="border-t border-b border-gray-200">
+        <div className="w-4/5 border-t border-b border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between">
-              <nav className="flex space-x-8 py-3">
-                <div className="flex space-x-8">
+              <nav className="flex justify-between space-x-8">
+                <div className="flex items-center space-x-6 py-3">
                   <Link to="/" className="text-gray-700 hover:text-[#59177e]">Home</Link>
                   <Link to="/shop" className="text-gray-700 hover:text-[#59177e]">Shop</Link>
                   <Link to="/shop-detail" className="text-gray-700 hover:text-[#59177e]">Shop Detail</Link>
@@ -174,7 +194,7 @@ const Header = () => {
                   </div>
                   <Link to="/contact" className="text-gray-700 hover:text-[#59177e]">Contact</Link>
                 </div>
-                <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-6 py-3">
                   <Link to="/login" className="text-gray-700 hover:text-[#59177e]">Login</Link>
                   <Link to="/register" className="text-gray-700 hover:text-[#59177e]">Register</Link>
                 </div>

@@ -12,12 +12,9 @@ const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex-1 flex">
-        {/* This empty div takes up the sidebar space */}
-        <div className="w-48"></div>
-        
+      <div className="flex-1">
         {/* Main content area */}
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col">
           <Banner />
           <div className="container mx-auto px-4 py-8">
             <FeaturedProducts />
