@@ -3,6 +3,12 @@ export interface Product {
   name: string;
   price: number;
   image: string;
+  category?: string;
+  rating?: number;
+  reviews?: number;
+  isNew?: boolean;
+  isBestSeller?: boolean;
+  discount?: number;
 }
 
 // Import all images statically
@@ -17,34 +23,52 @@ export const featuredProducts: Product[] = [
     id: 1,
     name: "Pure Cleanse",
     price: 299000,
-    image: item1
+    image: item1,
+    category: "skincare",
+    rating: 4.8,
+    reviews: 124,
+    isBestSeller: true
   },
   {
     id: 2,
     name: "Pure Essence",
     price: 399000,
-    image: item2
+    image: item2,
+    category: "toner",
+    rating: 4.6,
+    reviews: 89,
+    isNew: true
   },
   {
     id: 3,
     name: "Pure Cream",
     price: 499000,
-    image: item3
+    image: item3,
+    category: "moisturizer",
+    rating: 4.9,
+    reviews: 156,
+    isBestSeller: true
   },
   {
     id: 4,
-    name: "Pure Cream",
+    name: "Brightening Serum",
     price: 499000,
-    image: item4
+    image: item4,
+    category: "serum",
+    rating: 4.7,
+    reviews: 112,
+    discount: 15
   },
   {
     id: 5,
-    name: "Pure Cream",
-    price: 499000,
-    image: item5
-  },
-  
-  
+    name: "Anti-Aging Cream",
+    price: 599000,
+    image: item5,
+    category: "moisturizer",
+    rating: 4.5,
+    reviews: 78,
+    isNew: true
+  }
 ];
 
 export const awards = [

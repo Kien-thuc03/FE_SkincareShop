@@ -3,14 +3,19 @@ import fallbackImage from '../assets/react.svg';
 
 const NewsSection = () => {
   return (
-    <section className="py-12 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-10 inline-block pb-2 border-b-4 border-[#59177e]">
-          Nu Skin In The News
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <section className="bg-white px-4 py-8">
+      <div className="container mx-auto">
+        {/* Header */}
+        <div className="bg-[#59177e] py-2 px-4 mb-8">
+          <h2 className="text-white text-xl font-semibold">
+            Nu Skin In The News
+          </h2>
+        </div>
+        
+        {/* News grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {news.map((item) => (
-            <div key={item.id} className="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+            <div key={item.id} className="bg-white overflow-hidden border border-gray-200">
               <div className="h-40 overflow-hidden">
                 <img 
                   src={item.image} 
@@ -25,11 +30,11 @@ const NewsSection = () => {
                   }}
                 />
               </div>
-              <div className="p-4">
-                <h3 className="font-medium mb-2">{item.title}</h3>
+              <div className="p-3">
+                <h3 className="font-medium text-sm mb-1">{item.title}</h3>
                 <a 
                   href="#" 
-                  className="text-[#59177e] text-sm font-medium hover:underline"
+                  className="text-[#59177e] text-xs font-medium"
                   aria-label={`Read more about ${item.title}`}
                 >
                   Read More

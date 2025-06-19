@@ -1,26 +1,33 @@
+import React from 'react';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import Banner from '../components/Banner';
 import FeaturedProducts from '../components/FeaturedProducts';
 import PromoSection from '../components/PromoSection';
 import AwardSection from '../components/AwardSection';
 import BrandStory from '../components/BrandStory';
 import NewsSection from '../components/NewsSection';
+import Footer from '../components/Footer';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      
-      <main className="flex-grow">
-        <Banner />
-        <FeaturedProducts />
-        <PromoSection />
-        <AwardSection />
-        <BrandStory />
-        <NewsSection />
-      </main>
-      
+      <div className="flex-1 flex">
+        {/* This empty div takes up the sidebar space */}
+        <div className="w-48"></div>
+        
+        {/* Main content area */}
+        <div className="flex-1">
+          <Banner />
+          <div className="container mx-auto px-4 py-8">
+            <FeaturedProducts />
+            <PromoSection />
+            <AwardSection />
+            <BrandStory />
+            <NewsSection />
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   );
