@@ -124,19 +124,19 @@ const Banner = () => {
       <div className={`container mx-auto py-4 ${categoriesOpen ? '' : 'max-w-full'}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Collection 1 */}
-          <div className="relative h-48 bg-gray-200 overflow-hidden">
+          <div className="relative h-48 bg-gray-200 overflow-hidden group">
             <div 
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 transform group-hover:scale-110"
               style={{ 
                 backgroundImage: `url(${Banner4})`, 
                 filter: 'brightness(0.9)'
               }}
             ></div>
             <div className="absolute inset-0 flex flex-col justify-center px-8">
-              <div className="bg-gray-100 bg-opacity-80 p-4 max-w-xs">
-                <p className="text-sm font-medium text-gray-600">PREFER CUSTOMER 2025</p>
-                <h3 className="text-xl font-bold text-gray-800">Winter Collection</h3>
-                <button className="mt-2 px-4 py-1 text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">
+              <div className="border-l-4 border-purple-600 pl-4 max-w-xs backdrop-blur-sm transition-all duration-300 group-hover:translate-x-2 bg-gradient-to-r from-black/60 to-black/30 p-5">
+                <p className="text-sm font-medium text-purple-400 tracking-wider mb-1 uppercase">Prefer Customer 2025</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Winter Collection</h3>
+                <button className="mt-2 px-5 py-2 text-sm bg-purple-600 text-white hover:bg-purple-700 transition-colors duration-300 font-medium">
                   Shop Now
                 </button>
               </div>
@@ -144,19 +144,19 @@ const Banner = () => {
           </div>
           
           {/* Collection 2 */}
-          <div className="relative h-48 bg-gray-200 overflow-hidden">
+          <div className="relative h-48 bg-gray-200 overflow-hidden group">
             <div 
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 transform group-hover:scale-110"
               style={{ 
                 backgroundImage: `url(${Banner5})`, 
                 filter: 'brightness(0.9)'
               }}
             ></div>
             <div className="absolute inset-0 flex flex-col justify-center px-8">
-              <div className="bg-gray-100 bg-opacity-80 p-4 max-w-xs">
-                <p className="text-sm font-medium text-gray-600">PREFER CUSTOMER 2025</p>
-                <h3 className="text-xl font-bold text-gray-800">Winter Collection</h3>
-                <button className="mt-2 px-4 py-1 text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">
+              <div className="border-l-4 border-purple-600 pl-4 max-w-xs backdrop-blur-sm transition-all duration-300 group-hover:translate-x-2 bg-gradient-to-r from-black/60 to-black/30 p-5">
+                <p className="text-sm font-medium text-purple-400 tracking-wider mb-1 uppercase">Prefer Customer 2025</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Winter Collection</h3>
+                <button className="mt-2 px-5 py-2 text-sm bg-purple-600 text-white hover:bg-purple-700 transition-colors duration-300 font-medium">
                   Shop Now
                 </button>
               </div>
