@@ -18,7 +18,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className={`flex flex-col px-8 ${categoriesOpen ? 'pl-[20%]' : 'w-full'} transition-all duration-300`}>
+    <div className={`flex flex-col px-8 ${categoriesOpen ? 'pl-[23%]' : 'w-full'} transition-all duration-300`}>
       {/* Main Banner */}
       <div 
         className={`relative bg-gray-100 overflow-hidden transition-all duration-300 ease-in-out h-[400px]`}
