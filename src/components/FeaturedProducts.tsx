@@ -1,5 +1,5 @@
 import { featuredProducts } from '../models/ProductModel';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../styles/animations.css';
 import { getCartController } from '../controllers/CartController';
 import { initialCart } from '../models/CartModel';
