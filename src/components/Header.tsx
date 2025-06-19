@@ -46,9 +46,9 @@ const Header = () => {
       <div className="bg-[#59177e] text-white py-2">
         <div className="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-4 text-sm">
-            <Link to="/faqs" className="hover:underline">FAQs</Link>
-            <Link to="/help" className="hover:underline">Help</Link>
-            <Link to="/support" className="hover:underline">Support</Link>
+            <Link to="#" className="hover:underline">FAQs</Link>
+            <Link to="#" className="hover:underline">Help</Link>
+            <Link to="#" className="hover:underline">Support</Link>
           </div>
           <div className="flex space-x-4">
             <a href="#" aria-label="Facebook">
@@ -126,40 +126,10 @@ const Header = () => {
         </div>
       </div>
       
-      {/* Main navigation */}
-      <div className="border-t border-b border-gray-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between">
-            <nav className="flex space-x-8 py-3">
-              <Link to="/" className="text-gray-700 hover:text-[#59177e]">Home</Link>
-              <Link to="/shop" className="text-gray-700 hover:text-[#59177e]">Shop</Link>
-              <Link to="/shop-detail" className="text-gray-700 hover:text-[#59177e]">Shop Detail</Link>
-              <div className="relative group">
-                <button className="text-gray-700 hover:text-[#59177e] flex items-center">
-                  Pages
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute z-10 left-0 hidden group-hover:block bg-white shadow-md py-2 w-48">
-                  <Link to="/about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About Us</Link>
-                  <Link to="/faq" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</Link>
-                  <Link to="/terms" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</Link>
-                </div>
-              </div>
-              <Link to="/contact" className="text-gray-700 hover:text-[#59177e]">Contact</Link>
-            </nav>
-            
-            <div className="flex items-center space-x-6 py-3">
-              <Link to="/login" className="text-gray-700 hover:text-[#59177e]">Login</Link>
-              <Link to="/register" className="text-gray-700 hover:text-[#59177e]">Register</Link>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Main content with sidebar */}
-      <div className="flex">
+      <div className="flex sm:px-6 lg:px-8">
         {/* Categories sidebar */}
         <aside className="w-48 bg-white">
           <div className="bg-[#59177e] text-white py-3 px-4 font-medium">
@@ -180,10 +150,37 @@ const Header = () => {
             </ul>
           </nav>
         </aside>
-
-        {/* Page content will be rendered here through children */}
-        <div className="flex-1">
-          {/* Banner and main content will be rendered by child components */}
+        {/* Main navigation */}
+        <div className="border-t border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between">
+              <nav className="flex space-x-8 py-3">
+                <div className="flex space-x-8">
+                  <Link to="/" className="text-gray-700 hover:text-[#59177e]">Home</Link>
+                  <Link to="/shop" className="text-gray-700 hover:text-[#59177e]">Shop</Link>
+                  <Link to="/shop-detail" className="text-gray-700 hover:text-[#59177e]">Shop Detail</Link>
+                  <div className="relative group">
+                    <button className="text-gray-700 hover:text-[#59177e] flex items-center">
+                      Pages
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <div className="absolute z-10 left-0 hidden group-hover:block bg-white shadow-md py-2 w-48">
+                      <Link to="/about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About Us</Link>
+                      <Link to="/faq" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</Link>
+                      <Link to="/terms" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</Link>
+                    </div>
+                  </div>
+                  <Link to="/contact" className="text-gray-700 hover:text-[#59177e]">Contact</Link>
+                </div>
+                <div className="flex items-center space-x-6">
+                  <Link to="/login" className="text-gray-700 hover:text-[#59177e]">Login</Link>
+                  <Link to="/register" className="text-gray-700 hover:text-[#59177e]">Register</Link>
+                </div>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
     </div>
