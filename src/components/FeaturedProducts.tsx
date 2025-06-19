@@ -1,5 +1,5 @@
 import { featuredProducts } from '../models/ProductModel';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/animations.css';
 import { getCartController } from '../controllers/CartController';
 import { initialCart } from '../models/CartModel';
@@ -8,6 +8,8 @@ const FeaturedProducts = () => {
   const [activeTab, setActiveTab] = useState<'description' | 'specifications'>('description');
   const [currentPage, setCurrentPage] = useState(0);
   const cartController = getCartController(initialCart);
+  const [addedProducts, setAddedProducts] = useState<{[key: number]: boolean}>({});
+  const [notifications, setNotifications] = useState<{id: number, productId: number, message: string}[]>([]);
   
   const productsPerPage = 3;
   const totalPages = Math.ceil(featuredProducts.length / productsPerPage);
@@ -20,8 +22,35 @@ const FeaturedProducts = () => {
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   };
   
-  const addToCart = (productId: number) => {
+  const addToCart = (productId: number, productName: string) => {
     cartController.addToCart(productId);
+    
+    // Hiệu ứng nút đã thêm
+    setAddedProducts(prev => ({
+      ...prev,
+      [productId]: true
+    }));
+    
+    // Thêm thông báo
+    const newNotification = {
+      id: Date.now(),
+      productId,
+      message: `Added ${productName} to cart!`
+    };
+    setNotifications(prev => [...prev, newNotification]);
+    
+    // Xóa trạng thái "đã thêm" sau 1 giây
+    setTimeout(() => {
+      setAddedProducts(prev => ({
+        ...prev,
+        [productId]: false
+      }));
+    }, 1000);
+    
+    // Xóa thông báo sau 3 giây
+    setTimeout(() => {
+      setNotifications(prev => prev.filter(n => n.id !== newNotification.id));
+    }, 3000);
   };
   
   const displayedProducts = featuredProducts.slice(
@@ -37,6 +66,18 @@ const FeaturedProducts = () => {
           <h2 className="text-white text-2xl font-semibold text-center">
             Most Popular Products
           </h2>
+        </div>
+
+        {/* Notifications */}
+        <div className="fixed top-24 right-4 z-50">
+          {notifications.map(notification => (
+            <div 
+              key={notification.id}
+              className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-2 rounded shadow-md animate-slideIn"
+            >
+              {notification.message}
+            </div>
+          ))}
         </div>
 
         <div className="bg-gray-100 rounded-lg shadow-md overflow-hidden w-full">
@@ -151,10 +192,14 @@ const FeaturedProducts = () => {
                         
                         {/* Add to cart button */}
                         <button 
-                          className="mt-4 bg-purple-900 text-white w-full py-2 rounded hover:bg-purple-800 transition-colors font-medium"
-                          onClick={() => addToCart(product.id)}
+                          className={`mt-4 w-full py-2 rounded font-medium transition-all duration-300 ${
+                            addedProducts[product.id] 
+                              ? 'bg-green-500 text-white scale-95' 
+                              : 'bg-purple-900 text-white hover:bg-purple-800'
+                          }`}
+                          onClick={() => addToCart(product.id, product.name)}
                         >
-                          Add to card
+                          {addedProducts[product.id] ? 'Added to cart!' : 'Add to card'}
                         </button>
                       </div>
                     </div>
