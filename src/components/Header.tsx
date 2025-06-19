@@ -8,7 +8,7 @@ import { initialSearchState } from '../models/SearchModel';
 const Header = () => {
   const [cartCount, setCartCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const cartController = getCartController(initialCart);
   const searchController = getSearchController(initialSearchState);
 
@@ -20,9 +20,19 @@ const Header = () => {
     const unsubscribe = cartController.subscribe(() => {
       setCartCount(cartController.getCartCount());
     });
+
+    // Gửi trạng thái mở rộng categories qua event để banner có thể lắng nghe
+    const handleCategoriesChange = () => {
+      const event = new CustomEvent('categoriesToggle', { 
+        detail: { isOpen: isCategoriesOpen } 
+      });
+      document.dispatchEvent(event);
+    };
+
+    handleCategoriesChange();
     
     return unsubscribe;
-  }, []);
+  }, [isCategoriesOpen]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
@@ -46,7 +56,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
       {/* Top bar */}
       <div className="bg-[#59177e] text-white py-2">
         <div className="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
@@ -90,40 +100,40 @@ const Header = () => {
       {/* Main content with sidebar */}
       <div className="flex px-8">
         {/* Categories sidebar */}
-        <aside className="w-1/5 flex flex-col justify-between">
-        <div className="w-48"></div> {/* Empty space for sidebar alignment */}
-        <div 
-          className="bg-[#59177e] text-white py-3 px-4 font-medium flex justify-between items-center cursor-pointer"
-          onClick={toggleCategories}
-        >
-          <span>Categories</span>
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className={`h-4 w-4 transition-transform ${isCategoriesOpen ? 'transform rotate-180' : ''}`} 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
+        <aside className="w-1/5 flex flex-col justify-between relative">
+          <div></div>{/* Empty space for sidebar alignment */}
+          <div 
+            className="bg-[#59177e] text-white py-3 px-4 font-medium flex justify-between items-center cursor-pointer"
+            onClick={toggleCategories}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-        
-        {isCategoriesOpen && (
-          <nav className="w-full bg-white">
-            <ul>
-              {categories.map((category, index) => (
-                <li key={index} className="border-b border-gray-100 last:border-b-0">
-                  <Link 
-                    to={`/category/${category.toLowerCase()}`}
-                    className="block py-2 px-4 text-gray-700 hover:bg-gray-100"
-                  >
-                    {category}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
+            <span>Categories</span>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className={`h-4 w-4 transition-transform ${isCategoriesOpen ? 'transform rotate-180' : ''}`} 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          
+          {isCategoriesOpen && (
+            <nav className="absolute top-full left-0 w-full bg-white shadow-md category-dropdown z-10">
+              <ul className="w-full">
+                {categories.map((category, index) => (
+                  <li key={index} className="border-b border-gray-100 last:border-b-0">
+                    <Link 
+                      to={`/category/${category.toLowerCase()}`}
+                      className="block py-2 px-4 text-gray-700 hover:bg-gray-100"
+                    >
+                      {category}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
         </aside>
         {/* Main navigation */}
         <div className="w-4/5 border-t border-b border-gray-200">

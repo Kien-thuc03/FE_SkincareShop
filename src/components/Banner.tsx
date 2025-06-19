@@ -1,8 +1,28 @@
+import { useState, useEffect } from 'react';
+
 const Banner = () => {
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
+
+  useEffect(() => {
+    const handleCategoriesToggle = (event: CustomEvent) => {
+      setCategoriesOpen(event.detail.isOpen);
+    };
+
+    // Lắng nghe sự kiện từ Header component
+    document.addEventListener('categoriesToggle', handleCategoriesToggle as EventListener);
+
+    // Cleanup event listener khi component unmount
+    return () => {
+      document.removeEventListener('categoriesToggle', handleCategoriesToggle as EventListener);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col">
+    <div className={`flex flex-col mt-[180px] ${categoriesOpen ? 'pl-[20%]' : 'w-full'} transition-all duration-300`}>
       {/* Main Banner */}
-      <div className="relative h-[400px] bg-gray-100 overflow-hidden">
+      <div 
+        className={`relative bg-gray-100 overflow-hidden transition-all duration-300 ease-in-out h-[400px]`}
+      >
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
@@ -43,7 +63,7 @@ const Banner = () => {
       </div>
       
       {/* Collection Banners */}
-      <div className="container mx-auto px-4 py-4">
+      <div className={`container mx-auto px-4 py-4 ${categoriesOpen ? '' : 'max-w-full'}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Collection 1 */}
           <div className="relative h-48 bg-gray-200 overflow-hidden">
