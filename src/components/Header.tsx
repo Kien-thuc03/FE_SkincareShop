@@ -11,7 +11,7 @@ import { faCartShopping, faHeart } from '@fortawesome/free-solid-svg-icons';
 const Header = () => {
   const [cartCount, setCartCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
   const cartController = getCartController(initialCart);
   const searchController = getSearchController(initialSearchState);
 
