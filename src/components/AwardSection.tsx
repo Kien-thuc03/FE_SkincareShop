@@ -73,7 +73,7 @@ const AwardSection = () => {
   
   return (
     <section className="bg-white py-12" ref={sectionRef}>
-      <div className="container mx-auto">
+      <div className="container max-w-full">
         {/* Header */}
         <div className="flex justify-center mb-8">
           <div className="bg-purple-900 py-3 px-12 rounded-full">

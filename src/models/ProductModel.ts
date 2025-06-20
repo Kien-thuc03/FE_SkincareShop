@@ -23,6 +23,11 @@ import certification from '../assets/images/FDA-removebg.png';
 import awardBanner1 from '../assets/images/2023 Global Green Beauty Awards.avif';
 import awardBanner2 from '../assets/images/global-makeup-awards-23-275x283.png';
 import awardBanner3 from '../assets/images/NewBeautyAwards.webp';
+import news1 from '../assets/images/news1.jpg';
+import news2 from '../assets/images/news2.jpg';
+import news3 from '../assets/images/news3.jpg';
+import news4 from '../assets/images/news4.jpg';
+import news5 from '../assets/images/news5.jpg';
 
 export const featuredProducts: Product[] = [
   {
@@ -120,8 +125,9 @@ export const awards = [
 ];
 
 export const news = [
-  { id: 1, title: "Introducing New Products", image: item1 },
-  { id: 2, title: "Skin Science Research", image: item2 },
-  { id: 3, title: "Behind the Scenes", image: item3 },
-  { id: 4, title: "Meet Our Experts", image: item4 }
+  { id: 1, title: "28 New Beauty Products Our Editors Are Loving This Summer", image: news1 },
+  { id: 2, title: "The Best Skincare Products for Sensitive Skin", image: news2 },
+  { id: 3, title: "The Best Skincare Products for Sensitive Skin", image: news3 },
+  { id: 4, title: "The Best Skincare Products for Sensitive Skin", image: news4 },
+  { id: 5, title: "Meet Our Experts", image: news5 }
 ]; 
