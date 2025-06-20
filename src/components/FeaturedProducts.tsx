@@ -141,13 +141,13 @@ const FeaturedProducts = () => {
                       className={`px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium uppercase ${activeTab === 'description' ? 'border-b-2 border-yellow-600 text-gray-800 font-semibold' : 'text-gray-500'}`}
                       onClick={() => setActiveTab('description')}
                     >
-                      Desc
+                      Description
                     </button>
                     <button 
                       className={`px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium uppercase ${activeTab === 'specifications' ? 'border-b-2 border-yellow-600 text-gray-800 font-semibold' : 'text-gray-500'}`}
                       onClick={() => setActiveTab('specifications')}
                     >
-                      Specs
+                      Specification
                     </button>
                   </div>
                   <div className="px-3 sm:px-6">

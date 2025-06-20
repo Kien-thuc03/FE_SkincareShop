@@ -232,7 +232,7 @@ const Header = ({ defaultCategoriesOpen = true }: HeaderProps) => {
             </div>
             
             {/* Navigation links */}
-            <div className={`fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden ${mobileMenuOpen ? 'block' : 'hidden'}`} 
+            <div className={`fixed inset-0 z-40 md:hidden ${mobileMenuOpen ? 'block' : 'hidden'}`} 
                   onClick={() => setMobileMenuOpen(false)}>
             </div>
             <nav className={`md:flex-row justify-between fixed md:static top-0 right-0 h-full md:h-auto w-2/3 md:w-auto 
@@ -293,20 +293,6 @@ const Header = ({ defaultCategoriesOpen = true }: HeaderProps) => {
                       size="sm"
                     />
                   </button>
-
-                  {/* Mobile dropdown */}
-                  <div className={`md:hidden bg-gray-50 mt-2 ${pagesDropdownOpen ? 'block' : 'hidden'}`}>
-                    <Link to="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">About Us</Link>
-                    <Link to="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">FAQ</Link>
-                    <Link to="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</Link>
-                  </div>
-
-                  {/* Desktop dropdown */}
-                  <div className="absolute z-10 left-0 hidden group-hover:block md:group-hover:block bg-white shadow-md py-2 w-48">
-                    <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About Us</Link>
-                    <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</Link>
-                    <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Terms & Conditions</Link>
-                  </div>
                 </div>
 
                 <Link to="/" className="block py-2 md:py-0 text-gray-700 hover:text-[#59177e]">Contact</Link>
