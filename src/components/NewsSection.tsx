@@ -17,8 +17,8 @@ const NewsSection = () => {
   };
 
   return (
-    <section className="bg-white px-4 py-10">
-      <div className="container mx-auto">
+    <section className="bg-white py-10">
+      <div className="container max-w-full">
         {/* Header với Nu Skin In The News */}
         <div className="flex justify-center mb-10 relative">
           <div className="bg-[#59177e] py-3 px-16 rounded-full">
@@ -31,7 +31,7 @@ const NewsSection = () => {
         {/* Main content với news carousel và feature image */}
         <div className="flex flex-col md:flex-row gap-8">
           {/* News carousel */}
-          <div className="w-full md:w-3/4 relative">
+          <div className="w-full md:w-3/4 relative flex flex-col justify-center">
             <div className="flex justify-end">
               <a href="#" className="text-sm text-gray-600 hover:text-gray-800 font-medium">
                 View All &gt;&gt;

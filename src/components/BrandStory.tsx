@@ -3,7 +3,7 @@ import NatureScience from '../assets/images/Nature-Science.jpg';
 
 const BrandStory = () => {
   return (
-    <section className="bg-white px-4 py-8">
+    <section className="bg-white py-8">
       <div className="container max-w-full">
         {/* Header */}
         <div className="flex justify-center mb-12">
