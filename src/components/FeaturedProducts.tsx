@@ -11,7 +11,16 @@ const FeaturedProducts = () => {
   const [addedProducts, setAddedProducts] = useState<{[key: number]: boolean}>({});
   const [notifications, setNotifications] = useState<{id: number, productId: number, message: string}[]>([]);
   
-  const productsPerPage = 3;
+  // Thay đổi số lượng sản phẩm trên mỗi trang dựa vào kích thước màn hình
+  const getProductsPerPage = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 640) return 1;
+      if (window.innerWidth < 1024) return 2;
+    }
+    return 3;
+  };
+  
+  const productsPerPage = getProductsPerPage();
   const totalPages = Math.ceil(featuredProducts.length / productsPerPage);
   
   const handleNextPage = () => {
@@ -59,21 +68,21 @@ const FeaturedProducts = () => {
   );
 
   return (
-    <section className="bg-gray-100 py-8">
-      <div className="container max-w-full flex flex-col justify-center items-center px-4">
+    <section className="bg-gray-100 py-6 sm:py-8">
+      <div className="container mx-auto flex flex-col justify-center items-center px-4">
         {/* Header */}
-        <div className="bg-[#59177e] w-[25%] py-3 px-6 mb-6 rounded-lg">
-          <h2 className="text-white text-2xl font-semibold text-center">
+        <div className="bg-[#59177e] w-full sm:w-2/3 md:w-1/2 lg:w-1/4 py-2 sm:py-3 px-4 sm:px-6 mb-4 sm:mb-6 rounded-lg">
+          <h2 className="text-white text-lg sm:text-xl md:text-2xl font-semibold text-center">
             Most Popular Products
           </h2>
         </div>
 
         {/* Notifications */}
-        <div className="fixed top-24 right-4 z-50">
+        <div className="fixed top-16 sm:top-24 right-2 sm:right-4 z-50 max-w-[calc(100%-1rem)] sm:max-w-xs">
           {notifications.map(notification => (
             <div 
               key={notification.id}
-              className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-2 rounded shadow-md animate-slideIn"
+              className="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 sm:p-4 mb-2 text-sm sm:text-base rounded shadow-md animate-slideIn"
             >
               {notification.message}
             </div>
@@ -84,12 +93,12 @@ const FeaturedProducts = () => {
           {/* Main content container */}
           <div className="flex flex-col md:flex-row gap-4">
             {/* Left sidebar */}
-            <div className=" w-full md:w-1/4 bg-white flex flex-col ">
-              <div className="relative py-16 px-6 z-10 overflow-hidden h-full flex-grow">
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3 relative z-10">Find out<br/>what<br/>everyone's<br/>talking<br/>about</h3>
-                <p className="text-lg text-gray-600 mb-4 relative z-10 mt-4">Browse our best</p>
+            <div className="w-full md:w-1/4 bg-white flex flex-col">
+              <div className="relative py-8 sm:py-12 md:py-16 px-4 sm:px-6 z-10 overflow-hidden h-full flex-grow">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 relative z-10">Find out<br/>what<br/>everyone's<br/>talking<br/>about</h3>
+                <p className="text-base sm:text-lg text-gray-600 mb-4 relative z-10 mt-4">Browse our best</p>
                 
-                {/* Decorative elements */}
+                {/* Decorative elements - reduced for mobile */}
                 <div className="absolute inset-0 z-0 opacity-90">
                   {/* Curved Arc decorations */}
                   <div className="absolute top-6 right-0 w-20 h-20 border-t-2 border-emerald-400 rounded-tl-full blur-[2px] animate-pulse-slow"></div>
@@ -123,33 +132,33 @@ const FeaturedProducts = () => {
             </div>
 
             {/* Right product section */}
-            <div className="w-full md:w-3/4 ">
+            <div className="w-full md:w-3/4">
               {/* Tabs */}
               <div className="border-b">
                 <div className="flex items-center">
                   <div className="flex flex-1">
                     <button 
-                      className={`px-6 py-4 text-sm font-medium uppercase ${activeTab === 'description' ? 'border-b-2 border-yellow-600 text-gray-800 font-semibold' : 'text-gray-500'}`}
+                      className={`px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium uppercase ${activeTab === 'description' ? 'border-b-2 border-yellow-600 text-gray-800 font-semibold' : 'text-gray-500'}`}
                       onClick={() => setActiveTab('description')}
                     >
-                      Description
+                      Desc
                     </button>
                     <button 
-                      className={`px-6 py-4 text-sm font-medium uppercase ${activeTab === 'specifications' ? 'border-b-2 border-yellow-600 text-gray-800 font-semibold' : 'text-gray-500'}`}
+                      className={`px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium uppercase ${activeTab === 'specifications' ? 'border-b-2 border-yellow-600 text-gray-800 font-semibold' : 'text-gray-500'}`}
                       onClick={() => setActiveTab('specifications')}
                     >
-                      Specifications
+                      Specs
                     </button>
                   </div>
-                  <div className="px-6">
-                    <a href="#" className="text-sm text-gray-600 hover:text-gray-800 font-medium">View All &gt;&gt;</a>
+                  <div className="px-3 sm:px-6">
+                    <a href="#" className="text-xs sm:text-sm text-gray-600 hover:text-gray-800 font-medium">View All</a>
                   </div>
                 </div>
               </div>
               
               {/* Product grid */}
-              <div className="py-6 px-6 relative">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="py-4 sm:py-6 px-4 sm:px-6 relative">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {displayedProducts.map(product => (
                     <div key={product.id} className="border border-gray-200 rounded-md overflow-hidden relative hover:shadow-lg transition-shadow duration-300">
                       <div className="relative">
@@ -161,45 +170,47 @@ const FeaturedProducts = () => {
                         )}
                         
                         {/* Product image */}
-                        <div className="p-4 flex justify-center items-center bg-white h-70">
+                        <div className="p-4 flex justify-center items-center bg-white h-40 sm:h-48 md:h-56 lg:h-64">
                           <img 
                             src={product.image} 
                             alt={product.name} 
                             className="max-h-full max-w-full object-contain hover:scale-105 transition-transform duration-300" 
+                            loading="lazy"
                           />
                         </div>
 
                         {/* Round badge with product certification */}
-                        <div className="absolute right-2 top-2 w-16 h-16">
+                        <div className="absolute right-2 top-2 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16">
                           <div className="flex items-center justify-center">
-                            <img src={product.certification} alt={product.name} className="w-15 h-15 rounded-full" />
+                            <img src={product.certification} alt={product.name} className="w-full h-full rounded-full object-cover" />
                           </div>
                         </div>
                       </div>
                       
                       {/* Product details */}
-                      <div className="p-4 text-center bg-white">
+                      <div className="p-3 sm:p-4 text-center bg-white">
                         <p className="text-gray-400 text-xs uppercase tracking-wider">{product.category}</p>
-                        <h3 className="font-medium text-lg mt-1">{product.name}</h3>
+                        <h3 className="font-medium text-sm sm:text-base md:text-lg mt-1 line-clamp-2">{product.name}</h3>
                         
                         {/* Price with sale format */}
                         <div className="flex items-center justify-center mt-2">
-                          <span className="text-yellow-600 font-bold text-lg">${product.price.toFixed(2)}</span>
+                          <span className="text-yellow-600 font-bold text-base sm:text-lg">${product.price.toFixed(2)}</span>
                           {product.originalPrice && (
-                            <span className="text-gray-400 text-sm line-through ml-2">${product.originalPrice.toFixed(2)}</span>
+                            <span className="text-gray-400 text-xs sm:text-sm line-through ml-2">${product.originalPrice.toFixed(2)}</span>
                           )}
                         </div>
                         
                         {/* Add to cart button */}
                         <button 
-                          className={`mt-4 w-full py-2 rounded font-medium transition-all duration-300 ${
+                          className={`mt-3 sm:mt-4 w-full py-1.5 sm:py-2 rounded text-sm sm:text-base font-medium transition-all duration-300 ${
                             addedProducts[product.id] 
                               ? 'bg-green-500 text-white scale-95' 
                               : 'bg-purple-900 text-white hover:bg-purple-800'
                           }`}
                           onClick={() => addToCart(product.id, product.name)}
+                          aria-label={`Add ${product.name} to cart`}
                         >
-                          {addedProducts[product.id] ? 'Added to cart!' : 'Add to card'}
+                          {addedProducts[product.id] ? 'Added!' : 'Add to cart'}
                         </button>
                       </div>
                     </div>
@@ -209,19 +220,19 @@ const FeaturedProducts = () => {
                 {/* Navigation arrows */}
                 <button 
                   onClick={handlePrevPage}
-                  className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full w-8 h-8 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-100"
+                  className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full w-6 h-6 sm:w-8 sm:h-8 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-100"
                   aria-label="Previous page"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 <button 
                   onClick={handleNextPage}
-                  className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full w-8 h-8 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-100"
+                  className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full w-6 h-6 sm:w-8 sm:h-8 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-100"
                   aria-label="Next page"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
@@ -233,7 +244,7 @@ const FeaturedProducts = () => {
                   <button 
                     key={index}
                     onClick={() => setCurrentPage(index)}
-                    className={`mx-1 ${currentPage === index ? 'w-6 h-2 bg-gray-800' : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'} rounded-full transition-all duration-300`}
+                    className={`mx-1 ${currentPage === index ? 'w-5 sm:w-6 h-2 bg-gray-800' : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'} rounded-full transition-all duration-300`}
                     aria-label={`Go to page ${index + 1}`}
                   />
                 ))}

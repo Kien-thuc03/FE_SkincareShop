@@ -51,10 +51,10 @@ const Banner = () => {
   };
 
   return (
-    <div className={`flex flex-col px-8 ${categoriesOpen ? 'pl-[23%]' : 'w-full'} transition-all duration-300`}>
+    <div className={`flex flex-col px-4 sm:px-8 ${categoriesOpen ? 'md:pl-[23%]' : 'w-full'} transition-all duration-300`}>
       {/* Main Banner */}
       <div 
-        className={`relative bg-gray-100 overflow-hidden transition-all duration-300 ease-in-out h-[400px]`}
+        className={`relative bg-gray-100 overflow-hidden transition-all duration-300 ease-in-out h-[250px] sm:h-[300px] md:h-[400px]`}
       >
         {bannerImages.map((image, index) => (
           <div 
@@ -77,9 +77,9 @@ const Banner = () => {
         
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center z-20">
           <div className="px-4 max-w-2xl">
-            <h2 className="text-2xl font-bold mb-2">10% OFF YOUR FIRST ORDER</h2>
-            <h1 className="text-5xl font-bold mb-6">Reasonable Price</h1>
-            <button className="shop-now-btn">
+            <h2 className="text-sm sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">10% OFF YOUR FIRST ORDER</h2>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-6">Reasonable Price</h1>
+            <button className="shop-now-btn text-sm sm:text-base px-3 py-1 sm:px-4 sm:py-2 md:px-6 md:py-3">
               Shop Now
             </button>
           </div>
@@ -90,7 +90,7 @@ const Banner = () => {
           {bannerImages.map((_, index) => (
             <button 
               key={index} 
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentBannerIndex ? 'bg-white scale-125' : 'bg-gray-400'}`}
+              className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${index === currentBannerIndex ? 'bg-white scale-125' : 'bg-gray-400'}`}
               onClick={() => setCurrentBannerIndex(index)}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -99,22 +99,22 @@ const Banner = () => {
         
         {/* Navigation Arrows */}
         <button 
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 p-2 rounded-full text-black z-20"
+          className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 p-1 sm:p-2 rounded-full text-black z-20"
           aria-label="Previous slide"
           title="Previous slide"
           onClick={handlePrevClick}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <button 
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 p-2 rounded-full text-black z-20"
+          className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 p-1 sm:p-2 rounded-full text-black z-20"
           aria-label="Next slide"
           title="Next slide"
           onClick={handleNextClick}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
@@ -124,7 +124,7 @@ const Banner = () => {
       <div className={`container mx-auto py-4 ${categoriesOpen ? '' : 'max-w-full'}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Collection 1 */}
-          <div className="relative h-48 bg-gray-200 overflow-hidden group">
+          <div className="relative h-40 sm:h-48 bg-gray-200 overflow-hidden group">
             <div 
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 transform group-hover:scale-110"
               style={{ 
@@ -132,11 +132,11 @@ const Banner = () => {
                 filter: 'brightness(0.9)'
               }}
             ></div>
-            <div className="absolute inset-0 flex flex-col justify-center px-8">
-              <div className="border-l-4 border-purple-600 pl-4 max-w-xs backdrop-blur-sm transition-all duration-300 group-hover:translate-x-2 bg-gradient-to-r from-black/60 to-black/30 p-5">
-                <p className="text-sm font-medium text-purple-400 tracking-wider mb-1 uppercase">Prefer Customer 2025</p>
-                <h3 className="text-2xl font-bold text-white mb-2">Winter Collection</h3>
-                <button className="mt-2 px-5 py-2 text-sm bg-purple-600 text-white hover:bg-purple-700 transition-colors duration-300 font-medium">
+            <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8">
+              <div className="border-l-4 border-purple-600 pl-4 max-w-xs backdrop-blur-sm transition-all duration-300 group-hover:translate-x-2 bg-gradient-to-r from-black/60 to-black/30 p-3 sm:p-5">
+                <p className="text-xs sm:text-sm font-medium text-purple-400 tracking-wider mb-0 sm:mb-1 uppercase">Prefer Customer 2025</p>
+                <h3 className="text-lg sm:text-2xl font-bold text-white mb-1 sm:mb-2">Winter Collection</h3>
+                <button className="mt-1 sm:mt-2 px-3 py-1 sm:px-5 sm:py-2 text-xs sm:text-sm bg-purple-600 text-white hover:bg-purple-700 transition-colors duration-300 font-medium">
                   Shop Now
                 </button>
               </div>
@@ -144,7 +144,7 @@ const Banner = () => {
           </div>
           
           {/* Collection 2 */}
-          <div className="relative h-48 bg-gray-200 overflow-hidden group">
+          <div className="relative h-40 sm:h-48 bg-gray-200 overflow-hidden group">
             <div 
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 transform group-hover:scale-110"
               style={{ 
@@ -152,11 +152,11 @@ const Banner = () => {
                 filter: 'brightness(0.9)'
               }}
             ></div>
-            <div className="absolute inset-0 flex flex-col justify-center px-8">
-              <div className="border-l-4 border-purple-600 pl-4 max-w-xs backdrop-blur-sm transition-all duration-300 group-hover:translate-x-2 bg-gradient-to-r from-black/60 to-black/30 p-5">
-                <p className="text-sm font-medium text-purple-400 tracking-wider mb-1 uppercase">Prefer Customer 2025</p>
-                <h3 className="text-2xl font-bold text-white mb-2">Winter Collection</h3>
-                <button className="mt-2 px-5 py-2 text-sm bg-purple-600 text-white hover:bg-purple-700 transition-colors duration-300 font-medium">
+            <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8">
+              <div className="border-l-4 border-purple-600 pl-4 max-w-xs backdrop-blur-sm transition-all duration-300 group-hover:translate-x-2 bg-gradient-to-r from-black/60 to-black/30 p-3 sm:p-5">
+                <p className="text-xs sm:text-sm font-medium text-purple-400 tracking-wider mb-0 sm:mb-1 uppercase">Prefer Customer 2025</p>
+                <h3 className="text-lg sm:text-2xl font-bold text-white mb-1 sm:mb-2">Winter Collection</h3>
+                <button className="mt-1 sm:mt-2 px-3 py-1 sm:px-5 sm:py-2 text-xs sm:text-sm bg-purple-600 text-white hover:bg-purple-700 transition-colors duration-300 font-medium">
                   Shop Now
                 </button>
               </div>
