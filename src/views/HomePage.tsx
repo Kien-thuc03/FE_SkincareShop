@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
         {/* Main content area */}
         <div className="flex-1 flex flex-col">
           <Banner />
-          <div className="container px-8 py-8">
+          <div className="container max-w-full px-8 py-8">
             <FeaturedProducts />
             <PromoSection />
             <AwardSection />

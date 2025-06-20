@@ -72,8 +72,8 @@ const AwardSection = () => {
   }, [scrollPosition, isPaused, awardList.length, isVisible]);
   
   return (
-    <section className="bg-gray-50 px-4 py-12" ref={sectionRef}>
-      <div className="container w-full">
+    <section className="bg-gray-100 px-4 py-12" ref={sectionRef}>
+      <div className="container mx-auto px-4">
         {/* Header */}
         <div className="flex justify-center mb-8">
           <div className="bg-purple-900 py-3 px-12 rounded-full">
@@ -84,7 +84,7 @@ const AwardSection = () => {
         </div>
         
         {/* Banner */}
-        <div className="bg-gray-100 p-6 mb-12 flex flex-col md:flex-row items-center rounded-lg">
+        <div className="bg-gray-200 p-6 mb-12 flex flex-col md:flex-row items-center rounded-lg">
           <div className="w-full md:w-1/2 mb-6 md:mb-0">
             <img 
               src={awardBanner}
