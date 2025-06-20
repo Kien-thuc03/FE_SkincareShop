@@ -6,10 +6,12 @@ const NewsSection = () => {
     <section className="bg-white px-4 py-8">
       <div className="container mx-auto">
         {/* Header */}
-        <div className="bg-[#59177e] py-2 px-4 mb-8">
-          <h2 className="text-white text-xl font-semibold">
-            Nu Skin In The News
-          </h2>
+        <div className="flex justify-center mb-8">
+          <div className="bg-purple-900 py-3 px-12 rounded-full">
+            <h2 className="text-white text-2xl font-bold text-center">
+              Nu Skin In The News
+            </h2>
+          </div>
         </div>
         
         {/* News grid */}

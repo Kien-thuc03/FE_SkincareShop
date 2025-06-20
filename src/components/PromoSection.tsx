@@ -33,7 +33,7 @@ const PromoSection = () => {
                 Elevate your skincare routine
               </p>
               <button
-                className="bg-purple-800 text-white text-sm font-bold py-3 px-6 rounded-sm w-40 uppercase tracking-wider"
+                className="bg-purple-800 text-white text-sm font-bold py-3 px-6 rounded-sm w-40 uppercase tracking-wider cursor-pointer hover:bg-purple-900 transition-colors duration-300"
                 aria-label="Shop now for ageLOC LumiSpa iO"
               >
                 Shop Now

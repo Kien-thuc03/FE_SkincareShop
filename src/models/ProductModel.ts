@@ -109,6 +109,13 @@ export const awards = [
     product: "Nutricentials® Eye Love Bright Eyes",
     description: "2022 Pure Beauty Award Finalist",
     organization: "Pure Beauty Global Awards"
+  },
+  {
+    id: 7,
+    logo: awardBanner2,
+    product: "Nutricentials® Eye Love Bright Eyes",
+    description: "2022 Pure Beauty Award Finalist",
+    organization: "Pure Beauty Global Awards"
   }
 ];
 
