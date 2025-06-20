@@ -25,7 +25,7 @@ export class SearchController {
     
     this.searchState.query = query;
     // Giả lập kết quả tìm kiếm đơn giản
-    this.searchState.results = query ? [{ id: 1, text: query }] : [];
+    this.searchState.results = query ? [{ id: 1, name: query, price: 0, originalPrice: 0, image: '', category: '', certification: '' }] : [];
     this.notifyListeners();
   }
 
