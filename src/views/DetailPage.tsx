@@ -9,14 +9,11 @@ const DetailPage = () => {
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
   const searchController = getSearchController(initialSearchState);
-
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const query = params.get('q') || '';
-    
     if (query !== searchQuery) {
       setSearchQuery(query);
-      
       if (query) {
         searchController.setQuery(query);
       }
@@ -25,7 +22,7 @@ const DetailPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <Header defaultCategoriesOpen={false}/>
       
       <main className="flex-grow py-12">
         <div className="container mx-auto px-4">

@@ -6,7 +6,8 @@ import NewsBanner from '../assets/images/newsBanner.jpg';
 
 const NewsSection = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = 3; 
+  const totalPages = Math.ceil(news.length / 4);
+  const itemsPerPage = 4;
   
   const handleNextPage = () => {
     setCurrentPage((prev) => (prev + 1) % totalPages);
@@ -14,6 +15,12 @@ const NewsSection = () => {
   
   const handlePrevPage = () => {
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  // Lấy tin tức cho trang hiện tại
+  const getCurrentPageNews = () => {
+    const startIndex = currentPage * itemsPerPage;
+    return news.slice(startIndex, startIndex + itemsPerPage);
   };
 
   return (
@@ -39,8 +46,8 @@ const NewsSection = () => {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 p-6">
-              {news.slice(0, 4).map((item) => (
-                <div key={item.id} className="bg-white overflow-hidden border border-gray-100">
+              {getCurrentPageNews().map((item) => (
+                <div key={item.id} className="bg-white overflow-hidden border border-gray-200">
                   <div className="h-72 overflow-hidden">
                     <img 
                       src={item.image} 

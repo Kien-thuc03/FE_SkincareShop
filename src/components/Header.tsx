@@ -7,11 +7,14 @@ import { initialSearchState } from '../models/SearchModel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faHeart } from '@fortawesome/free-solid-svg-icons';
 
+type HeaderProps = {
+  defaultCategoriesOpen?: boolean;
+}
 
-const Header = () => {
+const Header = ({ defaultCategoriesOpen = true }: HeaderProps) => {
   const [cartCount, setCartCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(defaultCategoriesOpen);
   const cartController = getCartController(initialCart);
   const searchController = getSearchController(initialSearchState);
 

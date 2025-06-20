@@ -1,6 +1,8 @@
+import type { Product } from "./ProductModel";
+
 export interface SearchState {
   query: string;
-  results: any[];
+  results: Product[];
 }
 
 export const initialSearchState: SearchState = {

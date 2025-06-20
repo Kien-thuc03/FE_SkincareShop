@@ -129,5 +129,5 @@ export const news = [
   { id: 2, title: "The Best Skincare Products for Sensitive Skin", image: news2 },
   { id: 3, title: "The Best Skincare Products for Sensitive Skin", image: news3 },
   { id: 4, title: "The Best Skincare Products for Sensitive Skin", image: news4 },
-  { id: 5, title: "Meet Our Experts", image: news5 }
+  { id: 5, title: "Meet Our Experts - Dr. Keri Glassman", image: news5 }
 ]; 
