@@ -32,20 +32,20 @@ const NewsSection = () => {
         <div className="flex flex-col md:flex-row gap-8">
           {/* News carousel */}
           <div className="w-full md:w-3/4 relative">
-            <div className="absolute right-0 top-[-40px]">
+            <div className="flex justify-end">
               <a href="#" className="text-sm text-gray-600 hover:text-gray-800 font-medium">
                 View All &gt;&gt;
               </a>
             </div>
             
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 p-6">
               {news.slice(0, 4).map((item) => (
-                <div key={item.id} className="bg-white overflow-hidden">
+                <div key={item.id} className="bg-white overflow-hidden border border-gray-100">
                   <div className="h-72 overflow-hidden">
                     <img 
                       src={item.image} 
                       alt={item.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform hover:scale-105"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         if (!target.getAttribute('data-error')) {
@@ -55,8 +55,8 @@ const NewsSection = () => {
                       }}
                     />
                   </div>
-                  <div className="pt-2">
-                    <h3 className="font-medium text-xs text-gray-700">{item.title}</h3>
+                  <div className="p-3">
+                    <h3 className="font-medium text-sm text-gray-800">{item.title}</h3>
                   </div>
                 </div>
               ))}
@@ -65,40 +65,33 @@ const NewsSection = () => {
             {/* Navigation arrows */}
             <button 
               onClick={handlePrevPage}
-              className="absolute top-1/2 left-[-20px] transform -translate-y-1/2 bg-white rounded-full w-10 h-10 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-100"
+              className="absolute top-1/2 left-[-15px] transform -translate-y-1/2 bg-white rounded-full w-8 h-8 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-200"
               aria-label="Previous page"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button 
               onClick={handleNextPage}
-              className="absolute top-1/2 right-[-20px] transform -translate-y-1/2 bg-white rounded-full w-10 h-10 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-100"
+              className="absolute top-1/2 right-[-15px] transform -translate-y-1/2 bg-white rounded-full w-8 h-8 shadow-md flex items-center justify-center z-10 hover:bg-gray-100 border border-gray-200"
               aria-label="Next page"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
             
             {/* Pagination dots */}
-            <div className="flex justify-center mt-8">
-              <button 
-                onClick={() => setCurrentPage(0)} 
-                className={`w-4 h-4 ${currentPage === 0 ? 'bg-gray-800' : 'bg-gray-300'} mx-2 rounded-full`}
-                aria-label="Trang 1"
-              ></button>
-              <button 
-                onClick={() => setCurrentPage(1)} 
-                className={`w-4 h-4 ${currentPage === 1 ? 'bg-gray-800' : 'bg-gray-300'} mx-2 rounded-full`}
-                aria-label="Trang 2"
-              ></button>
-              <button 
-                onClick={() => setCurrentPage(2)} 
-                className={`w-4 h-4 ${currentPage === 2 ? 'bg-gray-800' : 'bg-gray-300'} mx-2 rounded-full`}
-                aria-label="Trang 3"
-              ></button>
+            <div className="flex justify-center pb-4 mt-4">
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <button 
+                  key={index}
+                  onClick={() => setCurrentPage(index)}
+                  className={`mx-1 ${currentPage === index ? 'w-6 h-2 bg-gray-800' : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'} rounded-full transition-all duration-300`}
+                  aria-label={`Go to page ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
           
