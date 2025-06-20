@@ -152,22 +152,42 @@ const Header = ({ defaultCategoriesOpen = true }: HeaderProps) => {
             </nav>
           )}
         </aside>
+        
         {/* Main navigation */}
         <div className="w-full md:w-4/5 border-t border-b border-gray-200">
           <div className="container flex flex-col mx-auto px-0 sm:px-4">
             {/* Search and logo section */}
             <div className="py-4 flex items-center justify-between">
-              {/* Mobile search trigger */}
-              <div className="md:hidden flex items-center">
+              {/* Mobile header: search left, heart/cart/menu right */}
+              <div className="flex items-center justify-between w-full md:hidden">
+                {/* Nút search bên trái */}
                 <button onClick={() => setMobileSearchOpen(!mobileSearchOpen)} className="p-2" aria-label="Search">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#59177e]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </button>
+                {/* Icon heart, cart, menu bên phải */}
+                <div className="flex items-center">
+                  <Link to="/" className="flex items-center text-[#59177e] ml-2">
+                    <FontAwesomeIcon icon={faHeart} />
+                    <span className="ml-1 text-sm">0</span>
+                  </Link>
+                  <Link to="/" className="flex items-center text-[#59177e] ml-4">
+                    <FontAwesomeIcon icon={faCartShopping} />
+                    <span className="ml-1 text-sm">{cartCount}</span>
+                  </Link>
+                  <button 
+                    className="ml-4 p-2" 
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+                    aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+                  >
+                    <FontAwesomeIcon 
+                      icon={mobileMenuOpen ? faXmark : faBars} 
+                      className="h-6 w-6 text-[#59177e]" 
+                    />
+                  </button>
+                </div>
               </div>
-
-              {/* Mobile logo */}
-              <div className="text-xl font-bold text-[#59177e] md:hidden">ShopApp</div>
 
               {/* Search form - hidden on mobile unless activated */}
               <div className={`${mobileSearchOpen ? 'absolute top-16 left-0 right-0 z-50 bg-white p-4 shadow-md' : 'hidden md:block'} flex-1 max-w-xl mx-4 md:mx-0`}>
@@ -188,30 +208,15 @@ const Header = ({ defaultCategoriesOpen = true }: HeaderProps) => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                   </button>
-                  {/* Close search button on mobile */}
-                  {mobileSearchOpen && (
-                    <button
-                      onClick={() => setMobileSearchOpen(false)}
-                      className="absolute right-[-16px] top-[-16px] bg-[#59177e] text-white rounded-full p-1"
-                      aria-label="Close search"
-                    >
-                      <FontAwesomeIcon icon={faXmark} size="sm" />
-                    </button>
-                  )}
                 </form>
               </div>
-
-              {/* Hamburger menu cho mobile */}
-              <button 
-                className="block md:hidden" 
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-                aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-              >
-                <FontAwesomeIcon 
-                  icon={mobileMenuOpen ? faXmark : faBars} 
-                  className="h-6 w-6 text-[#59177e]" 
-                />
-              </button>
+              {/* Overlay cho search mobile */}
+              {mobileSearchOpen && (
+                <div
+                  className="fixed inset-0 z-40 md:hidden"
+                  onClick={() => setMobileSearchOpen(false)}
+                ></div>
+              )}
 
               {/* Cart icons on desktop */}
               <div className="hidden md:flex items-center space-x-6 ml-4">
@@ -310,18 +315,6 @@ const Header = ({ defaultCategoriesOpen = true }: HeaderProps) => {
                 <div className="border-t mt-2 pt-2 md:hidden">
                   <Link to="/" className="block py-2 text-gray-700 hover:text-[#59177e]">Login</Link>
                   <Link to="/" className="block py-2 text-gray-700 hover:text-[#59177e]">Register</Link>
-                </div>
-
-                {/* Hiển thị icon cart và heart trên mobile menu */}
-                <div className="flex md:hidden items-center space-x-6 mt-4 pt-4 border-t">
-                  <Link to="/" className="flex items-center text-gray-700">
-                    <FontAwesomeIcon icon={faHeart} />
-                    <span className="ml-1 text-sm">0</span>
-                  </Link>
-                  <Link to="/" className="flex items-center text-gray-700">
-                    <FontAwesomeIcon icon={faCartShopping} />
-                    <span className="ml-1 text-sm">{cartCount}</span>
-                  </Link>
                 </div>
               </div>
 
