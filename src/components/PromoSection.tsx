@@ -3,7 +3,7 @@ import banner from '../assets/images/Banner.jpg';
 const PromoSection = () => {
   return (
     <section className="py-2">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div className="bg-[#f5f5f2] rounded-lg overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4 mt-4">
             {/* Image */}

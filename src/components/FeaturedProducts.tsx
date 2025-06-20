@@ -80,7 +80,7 @@ const FeaturedProducts = () => {
           ))}
         </div>
 
-        <div className="bg-gray-100 rounded-lg shadow-md overflow-hidden w-full">
+        <div className="bg-gray-100 overflow-hidden w-full">
           {/* Main content container */}
           <div className="flex flex-col md:flex-row gap-4">
             {/* Left sidebar */}

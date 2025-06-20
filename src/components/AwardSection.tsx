@@ -72,8 +72,8 @@ const AwardSection = () => {
   }, [scrollPosition, isPaused, awardList.length, isVisible]);
   
   return (
-    <section className="bg-gray-100 px-4 py-12" ref={sectionRef}>
-      <div className="container mx-auto px-4">
+    <section className="bg-white py-12" ref={sectionRef}>
+      <div className="container mx-auto">
         {/* Header */}
         <div className="flex justify-center mb-8">
           <div className="bg-purple-900 py-3 px-12 rounded-full">
@@ -84,7 +84,7 @@ const AwardSection = () => {
         </div>
         
         {/* Banner */}
-        <div className="bg-gray-200 p-6 mb-12 flex flex-col md:flex-row items-center rounded-lg">
+        <div className="bg-gray-200 mb-12 flex flex-col md:flex-row items-center rounded-lg">
           <div className="w-full md:w-1/2 mb-6 md:mb-0">
             <img 
               src={awardBanner}
@@ -92,7 +92,7 @@ const AwardSection = () => {
               className="w-full h-auto object-contain"
             />
           </div>
-          <div className="w-full md:w-1/2 text-right">
+          <div className="w-full p-4 text-center md:w-1/2">
             <p className="text-gray-700 text-lg font-medium">WORLD'S #1 COMPANY FOR</p>
             <h3 className="text-gray-800 text-3xl font-bold">Beauty & Wellness Device Systems</h3>
             <p className="text-gray-500 text-sm mt-2">Source: Euromonitor</p>
