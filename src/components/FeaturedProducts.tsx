@@ -60,7 +60,7 @@ const FeaturedProducts = () => {
 
   return (
     <section className="bg-gray-100 py-8">
-      <div className="container mx-auto flex flex-col justify-center items-center px-4">
+      <div className="container max-w-full flex flex-col justify-center items-center px-4">
         {/* Header */}
         <div className="bg-[#59177e] w-[25%] py-3 px-6 mb-6 rounded-lg">
           <h2 className="text-white text-2xl font-semibold text-center">
