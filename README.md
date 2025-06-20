@@ -1,3 +1,34 @@
+# FE_SkincareShop
+
+## Hướng dẫn cài đặt và chạy chương trình
+
+1. **Cài đặt Node.js**
+   - Tải và cài đặt Node.js từ [nodejs.org](https://nodejs.org/).
+   - Khuyến nghị dùng Node.js phiên bản >= 16.
+
+2. **Cài đặt các module phụ thuộc**
+   - Mở terminal/cmd tại thư mục dự án.
+   - Chạy lệnh sau để cài đặt các dependencies:
+     ```bash
+     npm install
+     ```
+
+3. **Chạy ứng dụng ở môi trường phát triển**
+   - Sau khi cài đặt xong, chạy lệnh:
+     ```bash
+     npm run dev
+     ```
+   - Ứng dụng sẽ chạy ở địa chỉ (thường là): [http://localhost:5173](http://localhost:5173)
+
+4. **Build ứng dụng để deploy**
+   - Để build project cho production, chạy:
+     ```bash
+     npm run build
+     ```
+   - Kết quả sẽ nằm trong thư mục `dist/`.
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -67,4 +98,4 @@ export default tseslint.config([
   },
 ])
 ```
-# FE_SkincareShop
+
